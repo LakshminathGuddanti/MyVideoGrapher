@@ -1,0 +1,71 @@
+{% extends 'init/base.html' %}
+{% block title %}VideoGrapher Details{% endblock %}
+{% block content %}
+
+<div class="container-fluid mt-4 responsive">
+    <div class="card">
+        <div class="card-head text-center">
+            <h3>The Full Details are as Follows:</h3>
+        </div>
+            <div class="card-body row">
+                <div class="col">
+                    <img src="{{ data.profileImag.url }}" class="d-block w-75">
+                </div>
+                <div class="col">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                              <td>Studio Name:</td>
+                              <td><h1>{{ data.studio_name }}</h1></td>
+                              
+                            </tr>
+                            <tr>
+                                <td>Name of the VideoGrapher</td>
+                                <td><h2>{{ data.first_name }}{{ data.last_name }}</h2></td>
+                                
+                            </tr>        
+                            <tr>
+                              <td>Experience:</td>
+                              <td>{{ data.experience }}</td>
+                              
+                            </tr>
+                            <tr>
+                              <td>Brief Description: </td>
+                              <td>{{ data.Description }}</td>
+                              
+                            </tr>
+                            
+                          </tbody>
+                    </table>
+                </div>
+            </div>
+    </div>
+
+    <div class="card mt-4"> 
+        <div class="card-head text-center">
+            <h3>View the camaera's we had </h3>
+        </div>
+        <div class="card-body row" style="display:flex;flex-wrap: wrap;">
+          {% for i in cam %}
+          <div class="col" ></div>
+          <div class="card col-md-4 my-2 mx-2">
+           <img class="d-block w-100" height="200px" width="200px" src="{{ i.camPic.url }}">
+           <div class="card-body">
+             <h5 class="card-title">{{ i.camName }}</h5>
+              <h3 class="text-right ">Rs.{{ i.prizePerHour }}/-</h3>
+             <p class="card-text">{{ i.description }}</p>
+             
+             <div class="row">
+               <a href="{% url 'camView' i.id %}" class="col mx-2 form-control btn btn-primary">View More</a>
+               
+             </div>
+             
+           </div>
+         </div>    
+         {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

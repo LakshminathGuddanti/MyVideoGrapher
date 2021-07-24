@@ -1,0 +1,25 @@
+{% load static %}
+<div class="container" style="display:flex;flex-wrap: wrap;" >
+
+   
+    
+        {% for i in videog %}
+        
+        <div class="row">        
+            <div class="col-lg-8 col-md-2 my-lg-5 my-3">
+                <div class="box bg-white">
+                    <div class="align-items-center">
+                        <div class="rounded-circle mx-3 text-center align-items-center justify-content-center blue"> <img src="{{ i.profileImag.url }}" class="d-block w-100"> </div>
+                        <div class=" flex-column"> <h2 class="card-heading">{{ i.studio_name }}</h2> 
+                            <p class="card-text">{{ i.Description }}</p>
+                            <a href="{% url 'viewProfile' i.id %}" class="btn btn-primary">See More</a>
+                         </div>
+                    </div>
+                </div>
+            </div>
+           </div> 
+        {% endfor %}
+    
+   
+</div>
+

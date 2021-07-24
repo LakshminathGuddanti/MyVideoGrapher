@@ -1,0 +1,33 @@
+{% extends 'init/base.html' %}
+{% block title %} Login To Your Studio {% endblock %}
+{% block content %}
+ <div class="container mt-4 row">
+     <div class="col-md-3"></div>
+    <div class="card col-md-6">
+        <div class="card-body">
+            
+            <h3>Login Here...</h3>    
+            
+            <form method = "POST">
+                {% csrf_token %}
+                
+            
+                <input type="text" placeholder="Enter Username" name="username" class= "form-control my-2">
+                <input type="password" placeholder="Enter Password" name="password" class="form-control my-2" >
+                <div class="row">
+                    <div class="col">
+                        <input type = "reset" name = "Reset" class = "btn btn-outline-info my-2 form-control">
+                    </div>
+                    <div class="col">
+                        <input type = 'submit' text-lightpe="submit" name = "Create" class = "btn btn-outline-success my-2 form-control">
+                    </div>
+                </div>
+                <br>
+                
+                <h5>Not yet registered Yet! <a href="{% url 'setupStudio' %}">SignUp Here</a></h5>
+             </form>
+            
+        </div>
+    </div>
+ </div>
+{% endblock %}

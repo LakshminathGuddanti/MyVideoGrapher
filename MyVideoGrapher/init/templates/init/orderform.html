@@ -1,0 +1,40 @@
+{% extends 'init/base.html' %}
+{% block title %} Register Studio {% endblock %}
+{% block content %}
+
+    
+    <div class="container mt-4">
+        {% if data %}
+        <div class="card row">
+            <div class="card-body">
+                <div class="col">
+                    <h3 class="card-head">Complete Your Order</h3><hr>
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                    {{ form }}
+                </div>
+            <div class="row">
+                <div class="col">
+                    <input type = "reset" name = "Reset" class = "btn btn-outline-danger my-2 form-control">
+                </div>
+                <div class="col">
+                    <input type = 'submit' text-lightpe="submit" name = "Create" class = "btn btn-outline-success my-2 form-control">
+                </div>
+            </div>
+            <br>
+        </form>
+            </div>
+        </div>
+        {% else %}
+            <div class = "card">
+                <div class="card-body text-center">
+                    <h3>You already had a Booking. So you cant book another once, until and unless The existing contract is Finished</h3>
+                    <a href="{% url 'mybookings' %}" class = "btn btn-outline-info my-2 form-control">Check Your Contract Here!</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+{% endblock %}
+

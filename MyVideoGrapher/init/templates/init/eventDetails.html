@@ -1,0 +1,64 @@
+{% extends 'init/base.html' %}
+{% block title %} The Camara Details {% endblock %}
+{% block content %}
+
+<div class="container mt-4 row">
+    <div class="col">
+        <div class="card mt-4"> 
+            <div class="card-head text-center">
+                <h3>View the camaera's we had </h3>
+            </div>
+            <div class="card-body" style="display:flex;flex-wrap: wrap;">
+              {% for i in cam %}
+              <div class="col" ></div>
+              <div class="card col-md-4 my-2 mx-2">
+               <img class="d-block w-100" height="200px" width="200px" src="{{ i.camPic.url }}">
+               <div class="card-body">
+                 <h5 class="card-title">{{ i.camName }}</h5>
+                 <p class="card-text">{{ i.description }}</p>
+                 <div class="row">
+                   <a href="#" class="col mx-2 form-control btn btn-primary">Check Availability</a>
+                   
+                 </div>
+                 
+               </div>
+             </div>    
+             {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="card col">
+        <div class="card-body">
+            <div class="col">
+                <h3>Fillout the details, to show the available camera's...</h3><hr>
+                <form method="post">
+                    
+                    <label for="id_nameOfEvent">NameOfEvent:</label>
+                    <input type="text" name="nameOfEvent" class="form-control my-2" placeholder="Enter your Name" maxlength="100" required id="id_nameOfEvent">
+
+                    <label for="id_fromDate">FromDate:</label>
+                    <input type="date" name="fromDate" class="form-control my-2" placeholder="Enter Starting day of event:" maxlength="50" required id="id_fromDate">
+
+                    <label for="id_toDate">ToDate:</label>
+                    <input type="date" name="toDate" class="form-control my-2" placeholder="Enter Ending day of event:" maxlength="50" required id="id_toDate">
+
+                    <label for="id_ceremonyTime">CeremonyTime:</label>
+                    <input type="time" name="ceremonyTime" class="form-control my-2" placeholder="Enter Timings" maxlength="50" required id="id_ceremonyTime">
+                    
+                    <label for="id_addressOfCeremony">AddressOfCeremony:</label>
+                    <textarea name="addressOfCeremony" cols="40" rows="3" class="form-control my-2" placeholder="Mention Event location" required id="id_addressOfCeremony"></textarea>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <input type = "reset" name = "Reset" class = "btn btn-outline-danger my-2 form-control">
+                </div>
+                <div class="col">
+                    <input type = 'submit' text-lightpe="submit" name = "Create" class = "btn btn-outline-success my-2 form-control">
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

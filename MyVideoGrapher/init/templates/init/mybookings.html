@@ -1,0 +1,59 @@
+{% extends 'init/base.html' %}
+{% block title %} Your Bookings {% endblock %}
+{% block content %}
+
+<div class="container-fluid mt-4">
+  {% if not emp %}
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="row">srno.</th>
+            <th scope="row">Name of Event</th>
+            <th scope="row">Email Address</th>
+            <th scope="row">Order From</th>
+            <th scope="row">from Date</th>
+            <th scope="row">to Date</th>
+            <th scope="row">Ceremony Time</th>
+            <th scope="row">Address of Event</th>
+            <th scope="row"> Status </th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in data %}  
+          <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ i.nameOfEvent }}</td>
+            <td>{{ i.email }}</td>
+            <td>{{ i.uUname }}</td>
+            <td>{{ i.fromDate }}</td>
+            <td>{{ i.toDate }}</td>
+            <td>{{ i.ceremonyTime }}</td>
+            <td>{{ i.addressOfCeremony }}</td>
+            <td>
+                {% if i.isAccepted == 1 %}
+                <span class="badge badge-info">Not Responded</span>
+                {% elif i.isAccepted == 2 %}
+                <span class="badge badge-success">Accepted</span>
+                {% else %}
+                <span class="badge badge-danger">Rejected</span>
+                {% endif %}
+            </td>
+            
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+        <div class="card col-md-6 mx-auto shadow-lg"> 
+          <div class="card-body">
+            <h3>
+              You Dont Booked any contract with studios
+            </h3>
+            <a href="{% url 'home' %}" class = "btn btn-outline-info my-2 form-control">Search Here</a>
+          </div>
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

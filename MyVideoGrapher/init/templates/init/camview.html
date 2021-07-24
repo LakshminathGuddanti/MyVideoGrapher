@@ -1,0 +1,47 @@
+{% extends 'init/base.html' %}
+{% block title %} Change Password {% endblock %}
+{% block content %}
+
+<div class="container mt-4">
+
+<div class="card">
+    <div class="card-head text-center">
+        <h3>The Full Details of Your Camera:</h3>
+    </div>
+        <div class="card-body row">
+            <div class="col">
+                <img src="{{ data.camPic.url }}" class="d-block w-75">
+            </div>
+            <div class="col">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                          <td>Camera Name:</td>
+                          <td><h1>{{ data.camName }}</h1></td>
+                          
+                        </tr>        
+                        <tr>
+                          <td>The cost per day</td>
+                          <td>{{ data.prizePerHour }}</td>
+                          
+                        </tr>
+                        <tr>
+                          <td>Brief Description: </td>
+                          <td>{{ data.description }}</td>
+                          
+                        </tr>
+                        <tr>
+                            {% if user.role == 1 %}
+                            <td><a href="{% url 'editCamdetails' data.id %}" class="btn btn-outline-info my-2 form-control"> Edit </a></td>
+                            <td><a href="{% url 'deleteCam' data.id %}" class="btn btn-outline-danger my-2 form-control">Delete</a></td>
+                            {% else %}
+                            <td><a href="{% url 'orderform' data.id %}" class="btn btn-outline-info my-2 form-control"> Book My Order </a></td>
+                            {% endif %}
+                        </tr>
+                      </tbody>
+                </table>
+            </div>
+        </div>
+</div>
+</div>
+{% endblock %}

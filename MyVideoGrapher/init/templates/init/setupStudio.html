@@ -1,0 +1,37 @@
+{% extends 'init/base.html' %}
+{% block title %} Register Studio {% endblock %}
+{% block content %}
+
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-body row ">
+                <div class="col-md-1"></div>
+                <div class="col">
+                    <h3>Set Up Your Studio</h3><hr>
+                    <h5>If You dont have any Studio Then Kindly don't Fillout the below form</h5>
+                    <a href="{% url 'home' %}" class = " w-50 btn btn-outline-primary my-2 form-control">Go Back to home page</a>
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                    {% for i in form %}
+                        {{i}}
+                    {% endfor %}
+                
+            <div class="row">
+                <div class="col">
+                    <input type = "reset" name = "Reset" class = "btn btn-outline-danger my-2 form-control">
+                </div>
+                <div class="col">
+                    <input type = 'submit' text-lightpe="submit" name = "Create" class = "btn btn-outline-success my-2 form-control">
+                </div>
+            </div>
+            <br>
+            <h5>Already had an Studio <a href="{% url 'login' %}">Login Here</a></h5>
+        </div>
+        <div class="col-md-1"></div>
+        </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

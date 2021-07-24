@@ -1,0 +1,30 @@
+{% extends 'init/base.html' %}
+{% block title %} Add Your Camara {% endblock %}
+{% block content %}
+
+    <div class="container mt-4">
+        <div class="card">
+                <div class="card-body">
+                    <h3>Add on Your Camera</h3>
+                    <form enctype="multipart/form-data" method="post">
+                        {% csrf_token %}
+                        {% for i in form %}
+                            {{i}}
+                        {% endfor %}
+                        <div class="row">
+                            <div class="col">
+                                <a href="{% url 'home' %}" class = "btn btn-outline-danger my-2 form-control">Back To Home page</a>
+                            </div>
+                            <div class="col">
+                                <input type = "reset" name = "Reset" class = "btn btn-outline-info my-2 form-control">
+                            </div>
+                            <div class="col">
+                                <input type = 'submit' text-lightpe="submit" name = "Create" placeholder="Proceed to Home Page" class = "btn btn-outline-success my-2 form-control">
+                            </div>
+                        </div>  
+                    </form>
+                </div>
+        </div>
+    </div>
+
+{% endblock %}

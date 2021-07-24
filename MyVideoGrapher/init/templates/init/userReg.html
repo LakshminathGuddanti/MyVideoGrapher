@@ -1,0 +1,32 @@
+{% extends 'init/base.html' %}
+{% block title %} Register Your account {% endblock %}
+{% block content %}
+
+<div class="container mt-4">
+    <div class="card row">
+        <div class="card-body">
+            <div class="col">
+                <h3>Create Your Account</h3><hr>
+                <form method="post">
+                    {% csrf_token %}
+                    
+                {% for i in form %}
+                    {{i}}
+                {% endfor %}
+            </div>
+        <div class="row">
+            <div class="col">
+                <input type = "reset" name = "Reset" class = "btn btn-outline-danger my-2 form-control">
+            </div>
+            <div class="col">
+                <input type = 'submit' text-lightpe="submit" name = "Create" class = "btn btn-outline-success my-2 form-control">
+            </div>
+        </div>
+        <br>
+        <h5>Already had an Studio <a href="#">Login Here</a></h5>
+    </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
